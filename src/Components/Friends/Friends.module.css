@@ -1,0 +1,28 @@
+/*
+.dialogs {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+}
+*/
+
+.friendsCSS {
+    padding: 10px;
+}
+
+
+.friendsCSS .active {
+    color: gold;
+}
+
+.photo img {
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+}
+.friendsItems {
+
+}
+.friendsF {
+    margin-top: 50px;
+    text-align: center;
+}

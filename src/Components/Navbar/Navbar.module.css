@@ -1,12 +1,29 @@
 .nav {
   grid-area: n;
   background-color: burlywood;
+  padding: 20px;
   }
 
-  .item {
+  .item a {
     color: white;
+    text-decoration: none;
   }
 
-  .item.active {
+  .item a.active {
     color: gold;
   }
+.itemFriends a {
+  color: #00fff2;
+
+  text-decoration: none;
+  margin-top: 100px;
+  align: right;
+
+}
+.itemFriends a.active {
+  color: #c300ff;
+  text-decoration: none;
+  margin-top: 100px;
+  align: right;
+  padding: 20px;
+}
