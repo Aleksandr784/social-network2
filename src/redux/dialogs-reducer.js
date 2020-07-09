@@ -1,7 +1,7 @@
 const SEND_MESSAGE = 'SEND-MESSAGE';
 const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
 
-let inetialState = {
+let initialState = {
     dialogs: [
         {
             id: 1,
@@ -23,7 +23,7 @@ let inetialState = {
             name: "Sasha",
             photo: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTQ9_txDC4vk8TofX6MI4YksfozDwVS0cCj_Ko1gGmTTLtn6Vg_&usqp=CAU"
         },
-        {id: 5, name: "Victor", photo: "https://i.thecartoonist.me/cartoon-face-of-white-male.png"},
+        { id: 5, name: "Victor", photo: "https://i.thecartoonist.me/cartoon-face-of-white-male.png" },
         {
             id: 6,
             name: "Valerij",
@@ -31,35 +31,36 @@ let inetialState = {
         },
     ],
     messages: [
-        {id: 1, mess: "Hi everyone", whoseAnswer: "myAnswer"},
-        {id: 2, mess: "How is your doings?", whoseAnswer: "somebodyAnswer"},
-        {id: 3, mess: "Yo. I am fine", whoseAnswer: "myAnswer"},
-        {id: 4, mess: "Yohhh", whoseAnswer: "somebodyAnswer"},
-        {id: 5, mess: "Yo. I am fine", whoseAnswer: "myAnswer"},
+        { id: 1, mess: "Hi everyone", whoseAnswer: "myAnswer" },
+        { id: 2, mess: "How is your doings?", whoseAnswer: "somebodyAnswer" },
+        { id: 3, mess: "Yo. I am fine", whoseAnswer: "myAnswer" },
+        { id: 4, mess: "Yohhh", whoseAnswer: "somebodyAnswer" },
+        { id: 5, mess: "Yo. I am fine", whoseAnswer: "myAnswer" },
     ],
     newMessageBody: ''
 };
 
-export const dialogsReducer = (state= inetialState, action) => {
+export const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
         case UPDATE_NEW_MESSAGE_BODY:
-            state.newMessageBody = action.body;
-            return state;
+            return {
+                ...state,
+                newMessageBody: action.body
+            };
         case SEND_MESSAGE:
             let body = state.newMessageBody;
-            state.newMessageBody = '';
-            state.messages.push({
-                id: 6,
-                mess: body, whoseAnswer: "myAnswer"
-            });
-            return state;
+            return {
+                ...state,
+                newMessageBody: '',
+                messages: [...state.messages, { id: 6, message: body, whoseAnswer: "myAnswer" }]
+            };
         default:
             return state;
     }
 }
 
-export const sendMessageCreator = () => ({type: SEND_MESSAGE})
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
 export const updateNewMessageBodyCreator = (body) =>
-    ({type: UPDATE_NEW_MESSAGE_BODY, body: body})
+    ({ type: UPDATE_NEW_MESSAGE_BODY, body: body })
 
 export default dialogsReducer;
